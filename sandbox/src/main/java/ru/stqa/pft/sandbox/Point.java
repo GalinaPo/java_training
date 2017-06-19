@@ -15,10 +15,10 @@ public class Point {
 
   }
 
-  public double distance(double x, double y) {
+  public double distance(Point p2) {
 
-    double dx = this.x - x;
-    double dy = this.y - y;
+    double dx = this.x - p2.x;
+    double dy = this.y - p2.y;
     double a = Math.sqrt(dx*dx + dy*dy);
     return a;
 
