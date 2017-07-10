@@ -50,7 +50,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void initContactModification(int index) {
-    wd.findElements(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).get(index).click();
+    wd.findElements(By.cssSelector("td.center img")).get(index).click();
   }
 
   public void submitContactModification() {
@@ -75,9 +75,6 @@ public class ContactHelper extends HelperBase {
       List<WebElement> tdElements = element.findElements(By.tagName("td"));
       String lastname = tdElements.get(1).getText();
       String firstname = tdElements.get(2).getText();
-
-//      String firstname = element.findElement(By.tagName("td")).getText();
-//      String lastname = element.findElement(By.tagName("td")).getText();
       ContactData contact = new ContactData(firstname, lastname, null,null );
       contacts.add(contact);
     }
