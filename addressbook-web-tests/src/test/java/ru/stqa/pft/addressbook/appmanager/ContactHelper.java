@@ -50,7 +50,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void initContactModification(int index) {
-    wd.findElements(By.cssSelector("td.center img")).get(index).click();
+    wd.findElements(By.cssSelector("td.center img[title='Edit']")).get(index).click();
   }
 
   public void submitContactModification() {
