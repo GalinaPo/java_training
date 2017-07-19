@@ -1,0 +1,20 @@
+<list>
+  <contact>
+    <firstname>Galina 0</firstname>
+    <lastname>Podmorina 0</lastname>
+    <mobilephone>Mobilephone 0</mobilephone>
+    <email>Email 0</email>
+  </contact>
+  <contact>
+    <firstname>Galina 1</firstname>
+    <lastname>Podmorina 1</lastname>
+    <mobilephone>Mobilephone 1</mobilephone>
+    <email>Email 1</email>
+  </contact>
+  <contact>
+    <firstname>Galina 2</firstname>
+    <lastname>Podmorina 2</lastname>
+    <mobilephone>Mobilephone 2</mobilephone>
+    <email>Email 2</email>
+  </contact>
+</list>
