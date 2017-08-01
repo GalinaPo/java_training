@@ -121,4 +121,14 @@ public class ContactHelper extends HelperBase {
             .withHomephone(home).withMobilephone(mobile).withWorkphone(work).withAddress(address)
             .withEmail(email).withEmail2(email2).withEmail3(email3);
   }
+
+  public void addToGroupContact(ContactData contact) {
+    selectContactById(contact.getId());
+    addToGroupSelectedContacts();
+    returnToHomePage();
+  }
+
+  public void addToGroupSelectedContacts() {
+    click(By.name("add"));
+  }
 }
