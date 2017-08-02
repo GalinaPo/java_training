@@ -44,10 +44,14 @@ public class AddContactToGroupTests extends TestBase {
       }
     }
     app.contact().addToGroupContact(modifiedcontact);
-    Groups addedgroup = modifiedcontact.getGroups();
+    Contacts after = app.db().contacts();
     boolean groupIsAdded = false;
-    if (addedgroup != null) {
-      groupIsAdded = true;
+    for(ContactData c: after) {
+      if (c.getId() == maxId) {
+        if (c.getGroups().size() != 0) {
+          groupIsAdded = true;
+        }
+      }
     }
     Assert.assertTrue(groupIsAdded);
   }

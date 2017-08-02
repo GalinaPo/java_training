@@ -8,7 +8,6 @@ import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
-import static org.testng.Assert.assertEquals;
 
 /**
  * Created by gpodmorina on 01.08.2017.
@@ -27,7 +26,6 @@ public class DeleteContactFromGroupTests extends TestBase {
   public void testDeleteContactFromGroup() {
     app.goTo().Homepage();
     Contacts before = app.db().contacts();
-    Groups beforeG = app.db().groups();
     ContactData modContact = before.iterator().next();
     Groups addGroupsBefore = modContact.getGroups();
     if (addGroupsBefore.size() == 0){
@@ -45,19 +43,24 @@ public class DeleteContactFromGroupTests extends TestBase {
       app.contact().addToGroupContact(modifiedcontact);
     }
     Contacts after = app.db().contacts();
+    int conId = 0;
     ContactData delContact = null;
     for(ContactData c: after) {
       if(c.getGroups().size() > 0) {
         delContact = c;
+        conId = c.getId();
       }
     }
     app.contact().deleteFromGroupContact(delContact);
-    Groups groupfromdel = delContact.getGroups();
+    Contacts afterdel = app.db().contacts();
     boolean contactWasDeleted = false;
-    if (groupfromdel == null) {
-      contactWasDeleted = true;
+    for (ContactData con: afterdel) {
+      if(con.getId() == conId) {
+        if (con.getGroups().size() == 0) {
+          contactWasDeleted = true;
+        }
+      }
     }
     Assert.assertTrue(contactWasDeleted);
-
   }
 }
