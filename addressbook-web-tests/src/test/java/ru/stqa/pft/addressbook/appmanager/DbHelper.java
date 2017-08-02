@@ -48,20 +48,4 @@ public class DbHelper {
     return new Contacts(result);
   }
 
-  public Contacts contactNotInGroup() {
-    Session session = sessionFactory.openSession();
-    session.beginTransaction();
-    List <ContactData> contacts = session.createQuery("from ContactData where deprecated = '0000-00-00'").list();
-    int g = 0;
-    for (ContactData contact : contacts) {
-      if (contact.getGroups() != null) {
-        g = g++;
-        return new Contacts(contacts);
-      }
-      if (g == 0) {
-        contacts.add(new ContactData().withFirstname("Galina1").withLastname("Podmorina"));
-      }
-    }
-  return new Contacts(contacts);
-}
 }

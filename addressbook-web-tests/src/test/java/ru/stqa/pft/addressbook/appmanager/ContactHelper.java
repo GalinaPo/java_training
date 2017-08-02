@@ -131,4 +131,19 @@ public class ContactHelper extends HelperBase {
   public void addToGroupSelectedContacts() {
     click(By.name("add"));
   }
+
+  public void openGroupForDelete(int groupToSelect_id){
+    wd.findElement(By.cssSelector("form#right option[value='" + groupToSelect_id + "']")).click();
+  }
+
+  public void deleteFromGroupContact(ContactData contact) {
+    int groupToSelect_id = Integer.parseInt(wd.findElement(By.name("to_group")).getAttribute("value"));
+    openGroupForDelete(groupToSelect_id);
+    selectContactById(contact.getId());
+    deleteFromGroupSelectedContacts();
+  }
+
+  public void deleteFromGroupSelectedContacts() {
+    click(By.name("remove"));
+  }
 }
