@@ -17,6 +17,7 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="createEmptyContentRootDirectories" value="true" />
+        <option name="disableWrapperSourceDistributionNotification" value="true" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/mantis-tests" />
         <option name="gradleHome" value="$PROJECT_DIR$/../../gradle-3.5/gradle-3.5" />
