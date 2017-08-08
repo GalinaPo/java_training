@@ -1,5 +1,6 @@
 package ru.stqa.pft.mantis.appmanager;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -26,6 +27,8 @@ public class ApplicationManager {
   private RegistrationHelper registrationHelper;
   private FtpHelper ftp;
   private MailHelper mailHelper;
+  private NavigationHelper navigationHelper;
+  private DbHelper dbHelper;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -83,5 +86,27 @@ public class ApplicationManager {
       mailHelper = new MailHelper(this);
     }
     return mailHelper;
+  }
+
+  public NavigationHelper goTo() {
+    if (navigationHelper == null) {
+      navigationHelper = new NavigationHelper(this);
+    }
+    return navigationHelper;
+  }
+
+  public DbHelper db() {
+    if (dbHelper == null) {
+      dbHelper = new DbHelper();
+    }
+    return dbHelper;
+  }
+
+  public void selectUser(String username) {
+    wd.findElement(By.linkText(username)).click();
+  }
+
+  public void resetPassword(){
+    wd.findElement(By.cssSelector("input[value='Сбросить пароль']")).click();
   }
 }
