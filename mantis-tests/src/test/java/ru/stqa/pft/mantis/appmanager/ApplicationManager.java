@@ -29,6 +29,7 @@ public class ApplicationManager {
   private MailHelper mailHelper;
   private NavigationHelper navigationHelper;
   private DbHelper dbHelper;
+  private SoapHelper soapHelper;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -108,5 +109,12 @@ public class ApplicationManager {
 
   public void resetPassword(){
     wd.findElement(By.cssSelector("input[value='Сбросить пароль']")).click();
+  }
+
+  public SoapHelper soap() {
+    if (soapHelper == null) {
+      soapHelper = new SoapHelper(this);
+    }
+    return soapHelper;
   }
 }
